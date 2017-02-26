@@ -1,4 +1,4 @@
-### Casamientos Estables
+## Casamientos Estables
 
 
 Problema:
@@ -22,7 +22,7 @@ Nuestro objetivo para este problema es, dados $M$ y $W$, encontrar un __Matching
 - Es Perfecto.
 - No tener inestabilidades.
 
-#### Solución:
+### Solución:
 
 Tenemos una idea greedy que detecte inestabilidades y las corrija.
 
@@ -36,13 +36,13 @@ Lo resolvemos para un grupo. Por ejemplo, hombres.
 
 Hacemos esto para todos los hombres solteros. Si uno queda soltero porque su matrimonio quedó deshecho por otro, vuelve a la lista. El algoritmo termina cuando no haya hombres solteros (y por lo tanto tampoco mujeres).
 
-#### El algoritmo termina siempre
+### El algoritmo termina siempre
 
 A cada paso un hombre propone a una mujer que nunca le haya propuesto antes. Esto se debe a que si una mujer lo rechaza o lo abandona, entonces ha encontrado a un hombre de mayor preferencia y nunca bajará de ahí. Aquel hombre la eligió del tope de sus preferencias, con lo cual no buscará a otra.
 
 De este modo, como hay a lo sumo $n^2$ propuestas posibles, este algoritmo tarda a lo sumo $n^2$ pasos. No tenemos el orden verdadero aún porque no sabemos con qué estructuras buscaremos.
 
-#### El matching encontrado es Perfecto
+### El matching encontrado es Perfecto
 
 En cada paso se elige a una mujer para un hombre, y si esta acepta, o estaba soltera o abandonó a su anterior marido, con lo cual nunca va a haber más de un hombre para una mujer ni más de una mujer para un hombre.
 
@@ -50,7 +50,7 @@ Nunca será posible que un hombre se quede sin nadie a quien proponerle, ya que 
 
 Como el algoritmo se detiene cuando no hay hombres solteros, entonces tampoco habrá mujeres solteras, logrando un matching perfecto.
 
-#### El matching encontrado no tiene inestabilidades
+### El matching encontrado no tiene inestabilidades
 
 Supongamos que existe una inestabilidad. Esto implica:
 
@@ -58,7 +58,7 @@ _Un hombre $m_1$ prefiere a una mujer de mayor rango en su lista que la que tien
 
 Esto no es posible, ya que para haber llegado a $w_1$, como los hombres proponen en orden de preferencia, ya antes le había propuesto a $w_2$ y esta o lo rechazó o lo abandonó. En cualquier caso, encontró un hombre de mayor rango y por lo tanto no le corresponde y la inestabilidad no existe.
 
-#### Estrucutra
+### Estrucutra
 
 Necesitamos ver que estructuras usamos para acceder eficientemente a los datos.
 
@@ -84,7 +84,7 @@ Lo único que falta determinar es cómo almacenamos **los pares del matching**. 
 
 - Para las mujeres una **lista con la pareja actual** para cada una. -1 si está soltera. No usamos esto mismo para los hombres solteros ya que buscar un soltero podría hacerse O(n).
 
-#### Implementación en pseudopython:
+### Implementación en pseudopython:
 
 ``` python
 # inicialmente no hay pares en el matching.
